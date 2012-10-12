@@ -1,9 +1,6 @@
 #ifndef WHIRLPOOL_H
 #define WHIRLPOOL_H 1
 
-//#include "Common/Tcdefs.h"
-#define __int32 long long 
-
 #if defined(__cplusplus)
 extern "C"
 {
@@ -64,6 +61,7 @@ typedef signed __int64 s64;
 #else  /* !_MSC_VER */
 typedef unsigned long long u64;
 typedef signed long long s64;
+#define __int32 int
 #define LL(v)   (v##ULL)
 #define ONE64   LL(0xffffffffffffffff)
 #endif /* ?_MSC_VER */
