@@ -4,7 +4,7 @@ libhasso README
 :Email:     alex@palc.de
 :Date:      12.10.2012
 :Revision:  0
-
+:toc:
 
 == Purpose
 
@@ -14,9 +14,10 @@ known to operating system, but to the current program via its own database.
 
 In order to come with very little dependency distinct algorithms are included 
 within this library who may reside within several other libraries. However the
-goal is to create an easy to use library, and each dependency added will increase
-complexity. There will be interfaces to increase the flexibility of the library
-so that other algorithms may be used without the need to modify libhasso.
+goal is to create an easy to use library, and each dependency added will 
+increase complexity. There will be interfaces to increase the flexibility of 
+the library so that other algorithms may be used without the need to modify 
+libhasso.
 
 
 == License
@@ -47,11 +48,28 @@ This list contains pieces of software I adopted from somewhere else.
 :truecryptUrl:  http://www.truecrypt.org
 
  - Whirlpool is a public domain hash function. Please refer to 
-   {whirpoolUrl}[the Whirpool homepage] for more information. I used it with the 
-   deviations made by {truecryptUrl}[the Truecrpyt authors] so it fits better 
-   into this C++ project.
+   {whirpoolUrl}[the Whirpool homepage] for more information. I used it with
+   the deviations made by {truecryptUrl}[the Truecrpyt authors] so it fits
+   better into this C++ project.
    
 :asciidocUrl:   http://www.methods.co.nz/asciidoc/index.html
    
  - This documentation was generated or may be transformed with 
    {asciidocUrl}[asciidoc].
+   
+   
+== Documentation
+
+=== Hashing
+
+The interface +IHash<int N>+ is used to pass a hashing algorithm to a function 
+which works with hashes. N is the number of bytes the hash results in.
+
+LibHasso uses {whirpoolUrl}[Whirlpool] if nothing else is specified. If you do 
+want to use another hash function implement one by creating a class deriving 
+from the IHash interface. LibHasso then will operate with this hash algorithm 
+transparently.
+
+If you want to create a whirlpool hash you can either use the Whirlpool wrapper
+declared in +whirlpoolwrapper.hpp+ or invoke the original functions directly, 
+as declared in +whirlpool.h+.

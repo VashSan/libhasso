@@ -1,27 +1,23 @@
 #ifndef WHIRLPOOLWRAPPER_HPP
 #define WHIRLPOOLWRAPPER_HPP
 
-#include <stddef.h>
 #include <array>
 #include <string>
+#include "ihash.hpp"
 
 namespace hasso
 {
-    
-class Whirlpool
+
+/// use this class for easy access to 
+class Whirlpool : public IHash<64>
 {
-   
 public:
-    typedef std::array<unsigned char, 64> Hash;
-    
-    Whirlpool();
-    ~Whirlpool();
     
     /// Calculates Hash from any data in memory.
-    void GetHash( const unsigned char* data, const size_t dataLength, Hash& result ) const;
+    void GetHash( const unsigned char* const data, const size_t dataLength, Hash& result ) const;
     
     /// Calculates Hash from any string.
-    void GetHash( const std::string& data, Hash& result) const;
+    void GetHash( const std::string& data, Hash& result) const; //override
     
     /// returns Hash in user friendly text
     std::string Friendly(const Hash& rawHash) const;
